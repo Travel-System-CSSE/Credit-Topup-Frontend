@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { FiBell } from "react-icons/fi";
 import { FiEdit2 } from "react-icons/fi";
-import { FiUser } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logoutUser } from "../features/user/userSlice";
+import { BiUserCircle } from "react-icons/bi";
 
 const NavBar = () => {
   const { user } = useSelector((store) => store.user);
@@ -19,6 +19,7 @@ const NavBar = () => {
           className="navbar-icon"
           alt="logo"
         />
+        <span>Epic Tracking</span>
       </div>
       <article className="nav-items">
         <h3>transport for anywhere in SL</h3>
@@ -27,13 +28,13 @@ const NavBar = () => {
             <FiEdit2 className="nav-icons" />
             <p>Review</p>
           </div>
+
           <div className="single-item">
             <FiBell className="nav-icons" />
-            {}
             <p>Alerts</p>
           </div>
           <div className="single-item" onClick={() => setLogout(!showLogout)}>
-            <FiUser className="nav-icons extra" />
+            <BiUserCircle className="nav-icons extra" />
             <span>
               {user ? (
                 user.name.trim()

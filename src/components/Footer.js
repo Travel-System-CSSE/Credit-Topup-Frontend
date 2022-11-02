@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-info">
         <button className="btn footer-btn">FeedBack</button>
-        <p>Epic Tracking @ 2022</p>
+        <p>Epic Tracking &reg; 2022</p>
       </div>
       <article className="social-icons">
         <img

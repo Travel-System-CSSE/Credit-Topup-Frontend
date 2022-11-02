@@ -57,6 +57,13 @@ const Register = () => {
   return (
     <main className="main">
       <form className="form" onSubmit={onSubmit}>
+        <div className=" register-icon">
+          <img
+            src="https://img.icons8.com/cotton/64/000000/school-bus--v2.png"
+            className="navbar-icon"
+            alt="logo"
+          />
+        </div>
         <h2>Travel Application</h2>
         <h3>{values.isMember ? "Login" : "Register"}</h3>
         {!values.isMember && (

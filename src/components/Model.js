@@ -3,6 +3,7 @@ import { FiX } from "react-icons/fi";
 import StripeCheckout from "react-stripe-checkout";
 import { useSelector } from "react-redux";
 import customFetch from "../util/axios";
+import { toast } from "react-toastify";
 
 const Model = ({ modelShow }) => {
   const { user } = useSelector((store) => store.user);
@@ -11,13 +12,13 @@ const Model = ({ modelShow }) => {
   const makePayment = async (token) => {
     const data = {
       amount: values,
-      userId: user.userId,
+      userId: user.idNumber,
     };
     await customFetch.post("/credit/", data);
+    toast.success(`$ ${values} credit add to your account`);
   };
 
   const modelClose = () => {
-    console.log(process.env.STRIPE_PK_KEY);
     modelShow();
   };
 
@@ -45,7 +46,8 @@ const Model = ({ modelShow }) => {
         </div>
         <StripeCheckout
           token={makePayment}
-          name="Travel Application"
+          image="https://img.icons8.com/cotton/64/000000/school-bus--v2.png"
+          name="Enter Card Details"
           stripeKey={process.env.REACT_APP_STRIPE_PK_KEY}
           currency="USD"
           amount={values * 100}

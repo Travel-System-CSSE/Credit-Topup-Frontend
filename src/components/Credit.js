@@ -9,21 +9,12 @@ const Credit = ({ showCredit }) => {
   const [loading, setLoading] = useState(false);
   const fetchData = async () => {
     setLoading(true);
-    const res = customFetch.get(`credit/${user.userId}`);
-
-    const { documents } = res.data;
-    if (!(documents.length === 0)) {
-      const sum = documents.map((el) => el.amount);
-      let totalCredit = sum.reduce(function (previousValue, currentValue) {
-        return previousValue + currentValue;
-      });
-      setLoading(false);
-      setCredit(totalCredit);
-      return;
-    }
-
-    setCredit(0);
+    const res = await customFetch.get(`credit/${user.userId}`);
     setLoading(false);
+    setCredit(res.data.balance);
+    // return;
+    // setCredit(0);
+    // setLoading(false);
   };
   useEffect(() => {
     fetchData();
