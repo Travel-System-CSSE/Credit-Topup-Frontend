@@ -11,8 +11,8 @@ const Model = ({ modelShow }) => {
 
   const makePayment = async (token) => {
     const data = {
-      amount: values,
-      userId: user.idNumber,
+      amount: parseInt(values),
+      idNumber: user.idNumber,
     };
     await customFetch.post("/credit/", data);
     toast.success(`$ ${values} credit add to your account`);
